@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="23px" height="16px" viewBox="0 0 23 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 9</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="4-Modules/Toolbar/Desktop" transform="translate(-219.000000, -12.000000)" stroke="#2DBECD">
+            <g id="Group-9" transform="translate(220.000000, 13.000000)">
+                <g id="2-Elements/Icons/List-View/Filled/Cyan" transform="translate(6.000000, 7.000000) rotate(-180.000000) translate(-6.000000, -7.000000) translate(0.000000, 1.000000)" fill="#2DBECD" stroke-width="1.71428571">
+                    <path d="M8.35594203,1.77635684e-15 L10.4573913,1.55431223e-15 C10.8896142,1.85880519e-15 11.24,0.350385848 11.24,0.782608696 C11.24,1.21483154 10.8896142,1.56521739 10.4573913,1.56521739 L8.35594203,1.56521739 C7.92371918,1.56521739 7.57333333,1.21483154 7.57333333,0.782608696 C7.57333333,0.350385848 7.92371918,1.85575489e-15 8.35594203,1.77635684e-15 Z M4.68927536,5.2173913 L10.4573913,5.2173913 C10.8896142,5.2173913 11.24,5.56777715 11.24,6 C11.24,6.43222285 10.8896142,6.7826087 10.4573913,6.7826087 L4.68927536,6.7826087 C4.25705251,6.7826087 3.90666667,6.43222285 3.90666667,6 C3.90666667,5.56777715 4.25705251,5.2173913 4.68927536,5.2173913 Z M1.0226087,10.4347826 L10.4573913,10.4347826 C10.8896142,10.4347826 11.24,10.7851685 11.24,11.2173913 C11.24,11.6496142 10.8896142,12 10.4573913,12 L1.0226087,12 C0.590385848,12 0.24,11.6496142 0.24,11.2173913 C0.24,10.7851685 0.590385848,10.4347826 1.0226087,10.4347826 Z" id="Combined-Shape"></path>
+                </g>
+                <g id="2-Elements/Glyphs/Upload/Cyan" transform="translate(16.250000, 7.000000) rotate(-180.000000) translate(-16.250000, -7.000000) translate(10.125000, 0.000000)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.74285714">
+                    <g id="Group-6" transform="translate(0.609000, 0.600000)">
+                        <path d="M9.29937662,2.98162338 L1.66262338,10.6183766" id="Path-9" transform="translate(5.481000, 6.800000) rotate(-45.000000) translate(-5.481000, -6.800000) "></path>
+                        <polyline id="Path-10" transform="translate(5.499920, 4.809530) rotate(-45.000000) translate(-5.499920, -4.809530) " points="2.45492032 1.76453001 8.49992032 1.80953001 8.54492032 7.85453001"></polyline>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
