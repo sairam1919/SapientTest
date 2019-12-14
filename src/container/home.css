@@ -79,16 +79,23 @@ hr {
 .EmptyData{
 	color: #503291;
     margin-top: 4%;
-    font-family: Lato;
-    font-size: 18px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
     font-weight: bolder;
-    position: relative;
+	position: relative;
+	left: 350px;
 }
 
 
 @media only screen and (max-width: 580px) {
 	.card {
 		width: fit-content !important;
+	}
+}
+
+@media only screen and (max-width: 760px) {
+	.row-padding {
+		background-color: white;
 	}
 }
 

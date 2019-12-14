@@ -16,7 +16,8 @@ class Home extends Component {
         this.state = {
             config: { 'Assending': 'assending', 'Desending': 'desending' },
             stateData: [],
-            searchData: []
+            searchData: [],
+            errMsg: HomeConstants.emptyDataAPIRequest
         };
         //Binding events
         this.handleFetchData();
@@ -42,6 +43,9 @@ class Home extends Component {
         items = items.filter((item) => {
             return item.name.toLowerCase().search(e.target.value.toLowerCase()) !== -1;
         });
+        if(items.length === 0) {
+           this.setState({errMsg: HomeConstants.emptyDataMsg});
+        }
         this.setState({ searchData: items });
     }
 
@@ -57,7 +61,11 @@ class Home extends Component {
 
     render() {
         const renderComponent = [];
-        const { searchData, config } = this.state;
+        const { searchData, config, errMsg } = this.state;
+        let status = true;
+        if(searchData.length === 0) {
+            status = false;
+        }
         if (searchData && searchData.length) {
             searchData.forEach((item) => {
                 renderComponent.push(
@@ -83,11 +91,11 @@ class Home extends Component {
                             handleSortOption={this.handleSortOption}
                         />
                     </div>
-                    {searchData ? <div className="row row-padding">
+                    {status ? <div className="row row-padding">
                         {renderComponent}
                     </div> :
                         <div className="EmptyData">
-                            {HomeConstants.emptyDataMsg}
+                            {errMsg}
                         </div>}
                 </div>
             </div >
