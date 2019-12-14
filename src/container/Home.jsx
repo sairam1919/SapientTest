@@ -14,7 +14,7 @@ class Home extends Component {
         super(props);
 
         this.state = {
-            config: { 'Assending': 'assending', 'Desending': 'desending' },
+            config: { 'Ascending': 'ascending', 'Desending': 'desending' },
             stateData: [],
             searchData: [],
             errMsg: HomeConstants.emptyDataAPIRequest
@@ -51,7 +51,7 @@ class Home extends Component {
 
     handleSortOption = (option) => {
         const { searchData } = this.state;
-        if (option && option.toLowerCase() === "assending") {
+        if (option && option.toLowerCase() === "ascending") {
             searchData.sort((a, b) => a - b);
         } else if (option) {
             searchData.sort((a, b) => a - b).reverse();

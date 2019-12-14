@@ -24,10 +24,13 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom --coverage"
+    "test": "react-scripts test --env=jsdom --coverage",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "devDependencies": {
     "redux-devtools-extension": "^2.13.8",
-    "redux-logger": "^3.0.6"
+    "redux-logger": "^3.0.6",
+    "gh-pages": "^2.1.1"
   }
 }
