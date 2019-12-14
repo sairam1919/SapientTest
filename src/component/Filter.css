@@ -1,0 +1,122 @@
+.function-bar {
+    position: relative;
+    margin-top: 40px;
+    right: 16px;
+}
+
+#search-icon {
+    height: 40px;
+    width: 200px;
+    background-color: #FFFFFF;
+    background-image: url("../Images/search.svg");
+    background-repeat: no-repeat;
+    background-position: 4% 55%;
+    padding-left: 28px;
+    color: #1B1B25;
+    font-family: Lato;
+    font-size: 14px;
+    line-height: 24px;
+    display: inline-block;
+    position: relative;
+    bottom: 14px;
+    border: none;
+}
+
+.sorting-block {
+    height: 40px;
+    width: 40px;
+    background-color: #FFFFFF;
+    display: inline-block;
+    border-radius: 5px;
+    padding: 14.25px 12px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.sorting-icon {
+    height: 15px;
+    width: 21px;
+    content: url("../Images/sorting.svg");
+}
+
+.sorting-menuarea {
+    height: 100;
+    width: 206px;
+    border-radius: 60px;
+    background-color: #FFFFFF;
+    position: relative;
+    top: 2px;
+    right: 114px;
+}
+
+.sorting-list {
+    height: 25px;
+    width: 48px;
+    color: #494953;
+    font-family: Lato;
+    font-size: 12px;
+    line-height: 24px;
+}
+
+.sorting-list:hover {
+    color: #16181b;
+    text-decoration: none;
+    background-color: #F3F3F7;
+}
+
+.dropdown-menu.show:hover {
+    box-shadow: 0px 0px 15px 6px #d9d9d9 !important;
+    cursor: pointer;
+}
+
+.sort-dropDownDiv {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 10rem;
+    padding: 0.5rem 0;
+    margin: 0.125rem 0 0;
+    font-size: 1rem;
+    color: #212529;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    background-clip: padding-box;
+    border-radius: 0.25rem;
+    width: 144px;
+    top: -1px !important;
+    border: none !important;
+}
+
+.sort-dropDownDiv:hover {
+    box-shadow: 0px 0px 15px 6px #d9d9d9 !important;
+    cursor: pointer;
+}
+
+.sorting-dropdown-item:hover {
+    height: 40px;
+    background-color: #F3F3F7;
+    color: #16181b;
+    text-decoration: none;
+}
+
+.dropdown-item {
+    height: 40px;
+    width: 144px;
+}
+
+.carddrop-withoutborder {
+    content: '';
+    display: block;
+    position: absolute;
+    top: -5px;
+    right: 16px;
+    width: 10px;
+    height: 10px;
+    background: #FFFFFF;
+    transform: rotate(225);
+    -webkit-transform: rotate(225deg);
+}

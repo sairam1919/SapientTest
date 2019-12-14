@@ -1,2 +1,2 @@
-# SapientTest
-Sapient Interview Test
+﻿Step1: npm Install
+Step2: npm start
