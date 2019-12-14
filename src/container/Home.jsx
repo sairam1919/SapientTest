@@ -52,9 +52,9 @@ class Home extends Component {
     handleSortOption = (option) => {
         const { searchData } = this.state;
         if (option && option.toLowerCase() === "ascending") {
-            searchData.sort((a, b) => a - b);
+            searchData.sort((a, b) => (a.id - b.id));
         } else if (option) {
-            searchData.sort((a, b) => a - b).reverse();
+            searchData.sort((a, b) => a.id - b.id).reverse();
         }
         this.setState({ searchData });
     }

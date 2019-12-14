@@ -2,7 +2,7 @@
   "name": "Home",
   "version": "1.0.0",
   "private": true,
-  "homepage": "/",
+  "homepage": "https://sairam1919.github.io/SapientTest/",
   "dependencies": {
     "antd": "^3.20.5",
     "babel": "^5.8.23",
@@ -29,8 +29,8 @@
     "deploy": "gh-pages -d build"
   },
   "devDependencies": {
+    "gh-pages": "^2.1.1",
     "redux-devtools-extension": "^2.13.8",
-    "redux-logger": "^3.0.6",
-    "gh-pages": "^2.1.1"
+    "redux-logger": "^3.0.6"
   }
 }

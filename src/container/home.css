@@ -21,8 +21,10 @@
 	float: right;
 	font-size: 12px;
 	max-width: 100px;
-	word-break: break-all;
 	color:orangered;
+	text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .card-body {
@@ -97,9 +99,12 @@ hr {
 	.row-padding {
 		background-color: white;
 	}
+	.EmptyData{
+		left: 150px;
+	}
 }
 
-@media only screen and (max-width: 320px) {
+@media only screen and (max-width: 520px) {
 	.key {
 		float: left;
 		font-size: 9px;
@@ -114,5 +119,10 @@ hr {
 		max-width: 100px;
 		word-break: break-all;
 		color:orangered;
+	}
+
+	.EmptyData{
+		left: 20px;
+		font-size: 14px;
 	}
 }
