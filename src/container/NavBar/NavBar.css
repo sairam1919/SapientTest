@@ -1,0 +1,221 @@
+ .top-nav-container {
+     background-color: #0747a6;
+     padding: 7px 0px 9px 0px;
+     width: 100%;
+     height: 45px;
+ }
+ 
+ .nav-search {
+     position: absolute;
+     right: 238px;
+ }
+ 
+ .nav-user-icon {
+     content: url(../../Images/user-icon.png);
+     width: 30px;
+     border-radius: 50%;
+     cursor: pointer;
+     margin-left: 9px;
+     margin-bottom: 39px;
+ }
+ 
+ .nav-notify-icon {
+     content: url(../../Images/notification_announcement.png);
+     width: 28px;
+     background-color: white;
+     border-radius: 50%;
+     margin: 0px 9px 50px 9px;
+     cursor: pointer;
+ }
+ 
+ .comp-icon {
+     content: url(../../Images/jara-logo.jpg);
+     width: 45px;
+     border-radius: 10px;
+     position: absolute;
+     left: 7px;
+     top: 5px;
+ }
+ 
+ .comp-name {
+     margin: -2px 10px 5px 20px;
+     position: absolute;
+     color: whitesmoke;
+     font: italic bold 19px/33px Georgia, serif;
+ }
+ 
+ .navbar-brand-left {
+     display: inline-block;
+ }
+ 
+ .navbar-middle {
+     display: inline-block;
+     color: whitesmoke;
+     position: absolute;
+     margin-left: 100px;
+     margin-top: 4px;
+     /* margin-top: -4px !important */
+ }
+ 
+ .navbar-right {
+     display: inline-block;
+     float: right;
+     margin-right: 10px;
+ }
+ 
+ .navbar-brand-left,
+ .navbar-middle,
+ .navbar-right ul {
+     list-style-type: none;
+ }
+ 
+ .navbar-brand-left,
+ .navbar-middle,
+ .navbar-right ul,
+ li {
+     display: inline-block;
+ }
+ 
+ .navbar-middle li a:hover {
+     background-color: rgba(9, 30, 66, 0.48);
+ }
+ 
+ .topnav {
+     overflow: hidden;
+     background-color: #333;
+ }
+ 
+ .navbar-middle li a {
+     padding: 14px 6px 11px 6px;
+     margin: 0 !important;
+ }
+ 
+ .said-nav-container {
+     background-color: #f9f9fd;
+     position: fixed;
+     width: 100px;
+     height: 100%;
+     box-shadow: 0 0 20px 0 rgba(0, 0, 0, .2);
+     z-index: 1;
+ }
+ 
+ .said-nav-list {
+     text-align: center;
+     border-radius: 15px;
+     margin-bottom: 10px;
+ }
+ 
+ .dashboard-icon {
+     content: url(../../Images/dashboard-icon.jpg);
+     width: 45px;
+     border-radius: 15px;
+     margin: 0px 0px -20px 0px !important;
+     padding: 0px !important;
+ }
+ 
+ .projects-icon {
+     content: url(../../Images/create-project.jpg);
+     width: 45px;
+     border-radius: 10px;
+     margin: 5px 0px -9px 0px !important;
+     padding: 0px !important;
+ }
+ 
+ .settings-icon {
+     content: url(../../Images/settings-icon.jpg);
+     width: 45px;
+     border-radius: 10px;
+     margin: 5px 0px -9px 0px !important;
+     padding: 0px !important;
+ }
+ 
+ .said-nav-list:hover {
+     background-color: rgba(9, 30, 66, 0.48);
+     cursor: pointer;
+ }
+ /* .said-nav-list a {
+     margin: 0px 0px -20px 0px !important;
+     padding: 0px !important;
+ } */
+ 
+ .said-nav-list p {
+     margin: 0px 0px -3px 0px !important
+ }
+ 
+ .dropdown-icon {
+     content: url(../../Images/Dropdown-Down-512.png);
+     width: 54px;
+     margin-top: -13px;
+     margin-right: -10px;
+ }
+ 
+ .user-preferences {
+     top: -28px !important;
+ }
+ 
+ .topnavbar-project-dropdown-window {
+     top: -19px !important;
+ }
+ 
+ .carddrop-withoutborder {
+     content: "";
+     display: block;
+     position: absolute;
+     top: 29px;
+     left: 22px;
+     width: 10px;
+     height: 10px;
+     background: #fff;
+     -ms-transform: rotate(225);
+     transform: rotate(225);
+     -webkit-transform: rotate(225deg);
+ }
+ 
+ .user-iocn-li {
+     margin: 0px 125px 9px 0px;
+ }
+ 
+ .user-name-role {
+     position: absolute;
+     top: -2px;
+     right: 25px;
+     text-align: center;
+ }
+ 
+ .user-name-role p {
+     margin: 3px 0px -8px 0px !important;
+     color: whitesmoke;
+ }
+ 
+ .devider {
+     display: inline-block;
+     border-left: 1px solid lightgray;
+     height: 41px;
+     margin-bottom: 43px;
+     margin-top: -4.5px;
+ }
+ 
+ .topnavbar-project-dropdown {
+     display: inline-block;
+ }
+ 
+ .arrow-symboll {
+     border: 6px solid transparent;
+     border-top-color: white;
+     content: "";
+     /* display: inline-block; */
+     height: 0;
+     overflow: hidden;
+     text-align: left;
+     text-indent: -999em;
+     /* position: relative; */
+     vertical-align: baseline;
+     width: 12px;
+     /* color: red; */
+     /* background-color: red; */
+     bottom: 24px;
+     left: 78px;
+     display: inline-block;
+     margin-bottom: -4px;
+     margin-left: -2px;
+ }

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .footer {
+            display: flex !important;
+        }
+        .sub-footer {
+            margin: auto !important;
+        }
+        .container {
+            background-color: whitesmoke !important;
+            border:1px solid lightgray !important;
+            border-radius: 20px !important;
+            box-shadow: 0px 8px 16px !important;
+        }
+        .confirmation{
+            color: green !important;
+             /* margin-left: 300px; */
+             font-size: 20px !important;
+             padding-top: 10px !important;
+             padding-bottom: 10px !important;
+        }
+        h3 {
+            text-align: center !important;
+            line-height: 1px;
+            font-family: sans-serif;
+        }
+        strong {
+            margin-left: 20px;
+        }
+        .UserDetails {
+            border:1px solid lightgray !important;
+            margin-left: 75px !important;
+            margin-right: 75px !important;
+            margin-top: 10px !important;
+            margin-bottom: 10px !important;
+            border-radius: 20px !important;
+            box-shadow: 1px 2px 2px !important;
+        }
+    </style>
+</head>
+<div class= "container">
+<div class= "logo"></div>
+<div class = "confirmation"><h3><b>Your Account Has Been Created..!</b></h3></div>
+<div class="UserDetails">
+    <p><Strong>UserName: {{username}}</Strong></p>
+    <p><Strong>Password: {{password}}</Strong></p>
+</div>
+<div class ="footer">
+    <div class= "sub-footer">
+        <p>Date & Time</p>
+        <p>{{Date}}</p>
+    </div
+</div>
+</div>
+</html>

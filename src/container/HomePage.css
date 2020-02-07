@@ -1,0 +1,73 @@
+body {
+    background: #dfdfec !important;
+}
+
+.home-page-container {
+    /* width: 100%; */
+    /* padding-top: 5%;
+    padding-left: 5%; */
+    /* padding: 5%; */
+    margin: auto;
+    background-color: #fff;
+    border-radius: 10px;
+    -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    position: relative;
+    overflow: hidden;
+    /* width: 768px; */
+    max-width: 100%;
+    min-height: 500px;
+    margin: 4% 7%;
+}
+
+.heading {
+    margin: 10px 10px 0px 10px;
+    font-family: cursive;
+}
+
+.float-right {
+    float: right;
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+.input-box,
+.drop-dow {
+    border: none;
+    padding: 7px 15px;
+    margin: 8px 0;
+    width: 100%;
+    background-color: lavender;
+    border-radius: 8px;
+}
+
+.c-btn-save {
+    background-color: #28a745!important;
+}
+
+.c-btn-cancle {
+    background-color: #dc3545!important;
+}
+
+.c-btn {
+    margin: 0px 10px 0px 10px;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 25px;
+    color: whitesmoke;
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.c-btn:focus {
+    outline: none;
+    color: black;
+}
+
+.input-box:focus {
+    outline: none;
+    border-bottom: 1px solid blue
+}

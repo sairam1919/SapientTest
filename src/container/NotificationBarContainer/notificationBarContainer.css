@@ -1,0 +1,14 @@
+    .warning-bar {
+        background-color: darkorange;
+        color: #ffffff;
+    }
+
+    .information-bar {
+        background-color: #2DBECD;
+        color: #ffffff;
+    }
+
+    .error-bar {
+        background-color: E61E50;
+        color: #ffffff;
+    }
