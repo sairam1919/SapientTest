@@ -63,7 +63,7 @@ router.post('/UserCreationEmail', (req, res) => {
     var transporter = nodemailer.createTransport({
         service: 'Gmail',
         auth: {
-            user: 'sairamreddy512@gmail.com',
+            user: 'sairamreddy.ponnala@gmail.com',
             pass: 'Sram@225',
             ssl: true
         }
@@ -82,7 +82,7 @@ router.post('/UserCreationEmail', (req, res) => {
         };
         var htmlToSend = template(replacements);
         var mailOptions = {
-            from: 'sairamreddy512@gmail.com',
+            from: 'sairamreddy.ponnala@gmail',
             to: temp.email,
             subject: 'Your Account Has Been Created..!',
             html: htmlToSend
@@ -106,7 +106,7 @@ router.post('/ProjectCreationEmail', (req, res) => {
     var transporter = nodemailer.createTransport({
         service: 'Gmail',
         auth: {
-            user: 'sairamreddy512@gmail.com',
+            user: 'sairamreddy.ponnala@gmail',
             pass: 'Sram@225',
             ssl: true
         }
@@ -127,7 +127,7 @@ router.post('/ProjectCreationEmail', (req, res) => {
         var htmlToSend = template(replacements);
 
         var mailOptions = {
-            from: 'sairamreddy512@gmail.com',
+            from: 'sairamreddy.ponnala@gmail',
             to: temp.Name,
             subject: temp.Sub,
             html: htmlToSend

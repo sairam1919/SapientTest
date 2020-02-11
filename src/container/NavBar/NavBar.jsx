@@ -24,7 +24,8 @@ export class NavBar extends Component{
     }
     gotoModule(e,module){
         console.log("module:",module);
-        if(this.props.setModule()){
+        if(this.props.setModule){
+            console.log("module.....", module);
             this.props.setModule(module);
         }
     }
@@ -52,7 +53,6 @@ export class NavBar extends Component{
     }
     render(){
         const {signInData,projectData} = this.props;
-        console.log("signInData", signInData);
         let items = [];
         projectData.projectList && projectData.projectList.forEach( (item) => {
             items.push(<DropdownItem >{item.project_name}</DropdownItem>) 
@@ -77,7 +77,7 @@ export class NavBar extends Component{
     									data-toggle="dropdown"
     									aria-expanded={ this.state.projectDropdownOpen }
     								>
-                                        <div>Projects <div className="arrow-symboll"></div></div>
+                                        {/* <div>Projects <div className="arrow-symboll"></div></div> */}
                                         
     								</DropdownToggle>
     								<div className="menuarea">
@@ -94,8 +94,8 @@ export class NavBar extends Component{
     							</Dropdown>
                                     </a>
                                 </li>
-                                <li><a>Teams</a></li>
-                                <li onClick={()=>this.createProject()}><a>Create Project</a></li>
+                                {/* <li><a>Teams</a></li> */}
+                                {/* <li onClick={()=>this.createProject()}><a>Create Project</a></li> */}
                             </ul>
                         </div>
                         <div className="navbar-right">

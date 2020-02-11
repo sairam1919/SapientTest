@@ -16,6 +16,7 @@
         "react": "^16.10.2",
         "react-bootstrap": "^1.0.0-beta.16",
         "react-dom": "^16.10.2",
+        "react-draggable": "^4.2.0",
         "react-dropdown": "^1.6.4",
         "react-modal": "^3.8.1",
         "react-redux": "^7.1.1",

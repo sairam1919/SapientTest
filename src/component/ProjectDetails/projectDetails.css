@@ -1,0 +1,58 @@
+.contentDiv {
+    border: 0.1px solid gray;
+    background-color: lightgray;
+    height: 500px;
+    padding-left: 15px;
+    margin-left: 20px;
+    margin-top: 10px;
+    cursor: move;
+    z-index: 10;
+    position: absolute;
+  }
+  
+  .subStories {
+    border: 1px solid;
+    border-radius: 2px;
+    background-color: whitesmoke;
+    padding: 15px;
+    margin-top: 25px;
+  }
+  
+  .teamSize{
+      border-left: 1px solid;
+      padding-left: 10px;
+  }
+  
+  .mainDiv{
+      margin-left: 7px !important;
+  }
+  .glyphicon-star-empty{
+      padding-left: 10px;
+      padding-right: 10px;
+  }
+  .navModal ul {
+      list-style:none;
+      padding:0;
+      margin:0;
+  }
+  .navModal ul li {
+    border: 1px solid lightgrey;
+    border-radius: 2px;
+    width: 120px;
+    height: 30px;
+    margin-top: 5px;
+    background-color: beige;
+    text-align: justify;
+    padding-top: 5px;
+  }
+  
+  .navModal span{
+    margin-right: 10px;
+      margin-left: 5px;
+  }
+
+  .Projectname {
+      cursor: pointer;
+      color : orangered;
+  }
+  

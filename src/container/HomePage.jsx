@@ -38,8 +38,9 @@ class HomePage extends Component {
     toggleProjectModel(){
         this.setState({ showModal: !this.state.showModal })
     }
-    setModule(currentPage) {
-        this.setState({ currentPage });
+    setModule(val) {
+        console.log("currentPage", val);
+        this.setState({ currentPage: val });
     }
     logOut(user) {
         this.props.userLogOut(user);
@@ -47,6 +48,7 @@ class HomePage extends Component {
     gotoModule() {
         const module = this.state.currentPage;
         let renderComponent = null;
+        console.log("Module", module);
         switch (module) {
             case 'dashboard':
                 renderComponent = <DashBoard></DashBoard>;
@@ -80,7 +82,8 @@ class HomePage extends Component {
                 {signInData.isLogin
                     ?
                     <div>
-                        <NavBar setModule={this.setModule}
+                        <NavBar 
+                            setModule={this.setModule}
                             signInData={signInData}
                             logOut={this.logOut}
                             toggleProjectModel={this.toggleProjectModel}
