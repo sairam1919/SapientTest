@@ -183,11 +183,16 @@ export class Project extends Component {
     }
 
     projectForm = () => {
-        this.state.projects.push({
-            name: this.state.project_name,
-            description: this.state.project_description,
-            projectVersion: this.state.project_version,
-            releases: []
+//         this.state.projects.push({
+//             name: this.state.project_name,
+//             description: this.state.project_description,
+//             projectVersion: this.state.project_version,
+//             releases: []
+//         });
+        this.props.saveProject({
+            project_name: this.state.project_name,
+            project_description: this.state.project_description,
+            project_version: this.state.project_version,
         });
         this.setState({ isModalOpen: false })
     }
@@ -212,22 +217,23 @@ export class Project extends Component {
     }
 
     render() {
-        const { showModal } = this.props;
+        const { showModal, projectData } = this.props;
         const { projects, isProjectSelected, showSelectedProjectDetils, selectedProject } = this.state;
         const renderComponent = [];
         const renderRelease = [];
         const renderProjects = [];
+        const projectList= projectData && projectData.projectList;
 
-        if (projects && projects.length) {
-            projects.forEach((item) => {
+        if (projectList && projectList.length) {
+            projectList.forEach((item) => {
                 renderProjects.push(
                     <div className="col-sm-6 releaseDiv">
                         <div>
-                            <span className="releaseHeading" onClick={(e) => this.showProjectDetails(e, item)}>{item.name}</span>
+                            <span className="releaseHeading" onClick={(e) => this.showProjectDetails(e, item)}>{item.project_name}</span>
                             <br></br>
-                            <span className="releaseDescription" onClick={(e) => this.showProjectDetails(e, item)}>{item.description}</span>
+                            <span className="releaseDescription" onClick={(e) => this.showProjectDetails(e, item)}>{item.project_description}</span>
                             <br></br>
-                            <span className="releaseVersion" onClick={(e) => this.showProjectDetails(e, item)}>{item.version}</span>
+                            <span className="releaseVersion" onClick={(e) => this.showProjectDetails(e, item)}>{item.project_version}</span>
                         </div>
                     </div>
                 );

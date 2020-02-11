@@ -57,7 +57,9 @@ class HomePage extends Component {
                 renderComponent = ""
                 break;
                 case 'projects':
-                renderComponent = <Project></Project>;
+                renderComponent = <Project 
+                projectData={this.props.projectData}
+                saveProject={this.saveProject} />;
                 break;
             default:
                 renderComponent = <DashBoard></DashBoard>;
