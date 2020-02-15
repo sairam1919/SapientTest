@@ -14,7 +14,8 @@ export class JaraApp extends Component {
 
         this.state = {
             isSignIn: true,
-            isSignUp: false
+            isSignUp: false,
+            userDetails: {}
         };
         //Binding events
         this.goToSignUpPage = this.goToSignUpPage.bind(this);
@@ -29,7 +30,8 @@ export class JaraApp extends Component {
         this.setState({ isSignIn: true, isSignUp: false });
     }
     goToDashBoard(data) {
-       // this.setState({ isSignIn: false, isSignUp: false });
+        console.log("Data: ", data);
+        this.setState({userDetails: data});
         this.props.signInUser(data);
     }
 
@@ -48,15 +50,12 @@ export class JaraApp extends Component {
                 }
             </div>
         );
-        console.log("this.props.signInData", this.props.signInData);
         return (
             <div>
                 {this.props.signInData.isLogin
                     ? 
-                    // <div> <HomePage signInUserData = {this.props.signInData}></HomePage></div>
-                    // <Route render={({match})=>(
-                    //     (<Redirect to='/homePage' />))}></Route> 
-                    <Redirect to='/homePage' />
+                    <Redirect to='/homePage' 
+                    />
                     : loginForm
                 }
             </div>
@@ -75,7 +74,7 @@ const mapStateToProps = (state) => {
  */
 const mapDispatchToProps = (dispatch) => {
     return {
-        signInUser: () => dispatch(signInUser())
+        signInUser: (data) => dispatch(signInUser(data))
     };
 };
 

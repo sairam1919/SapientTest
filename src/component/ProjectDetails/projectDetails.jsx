@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
 import './projectDetails.css';
-import { Draggable } from 'react-draggable'; // The default
 
 export default class ProjectDetails extends Component {
     constructor(props) {
@@ -43,67 +42,57 @@ export default class ProjectDetails extends Component {
     eventLogger = (e, data) => {
         console.log('Event: ', e);
         console.log('Data: ', data);
-      };
+    };
 
     render() {
+        const { projectData, selectedProject } = this.props;
+        let renderUserstories = [];
+        if (projectData && projectData.projectList && projectData.projectList.length) {
+            projectData.projectList.forEach((elemnt) => {
+                if (elemnt.name === selectedProject) {
+                    elemnt.epics.forEach((epic) => {
+                        epic.capabilites.forEach((capability) => {
+                            capability.features.forEach((feature) => {
+                                feature.userstories.forEach((userstory) => {
+                                    console.log("UserStories Length", userstory);
+                                    renderUserstories.push(
+                                        <div className="subStories">
+                                            <div><span className="subStoriesHeading" onClick={this.show} >{userstory.name}</span></div>
+                                            <div>
+                                                <span title="Edit" className="glyphicon glyphicon-edit contentIcons"></span>
+                                                <span title="Checklist" className="glyphicon glyphicon-check contentIcons"> <b>2/3</b></span>
+                                                <span title="Comments" className="glyphicon glyphicon-comment contentIcons"></span>
+                                            </div>
+                                        </div>
+                                    )
+                                })
+                            })
+                        })
+                    })
+                }
+            })
+        }
         return (
             <div>
                 <div className="container-fluid">
                     <div className="row mainDiv">
-        <span className="Projectname" onClick = {this.props.handleBackButtonClick}>{this.props.selectedProject}</span>
+                        <span className="Projectname" onClick={this.props.handleBackButtonClick}>{selectedProject}</span>
                         <span className="glyphicon glyphicon-star-empty starIcon"></span>
                         <span className="teamSize"> 8 Members</span>
                     </div>
                     <div className="row">
                         <div className="col-sm-2 contentDiv">
                             <h4 className="contentHeading">Backlogs</h4>
-                            <div className="subStories">
-                                <div><span className="subStoriesHeading" onClick={this.show} >story 1</span></div>
-                                <div>
-                                    <span title="Edit" className="glyphicon glyphicon-edit contentIcons"></span>
-                                    <span title="Checklist" className="glyphicon glyphicon-check contentIcons"> <b>2/3</b></span>
-                                    <span title="Comments" className="glyphicon glyphicon-comment contentIcons"></span>
-                                </div>
-                            </div>
-                            {/* <Draggable
-                             axis="x"
-                             handle=".handle"
-                             defaultPosition={{x: 0, y: 0}}
-                             position={null}
-                             grid={[25, 25]}
-                             scale={1}
-                             onStart={this.handleStart}
-                             onDrag={this.handleDrag}
-                             onStop={this.handleStop}
-                            >
-                            <div className="subStories">
-                                <span className="subStoriesHeading">story 2</span>
-                            </div>
-                            </Draggable> */}
-                            <div className="subStories">
-                                <span className="subStoriesHeading">story 3</span>
-                            </div>
-                            <div className="subStories">
-                                <span className="subStoriesHeading">story 4</span>
-                            </div>
+                            {renderUserstories}
                         </div>
                         <div className="col-sm-2 contentDiv">
                             <h4 className="contentHeading">InProgress</h4>
-                            <div className="subStories">
-                                <span className="subStoriesHeading">story 3</span>
-                            </div>
                         </div>
                         <div className="col-sm-2 contentDiv">
                             <h4 className="contentHeading">Testing</h4>
-                            <div className="subStories">
-                                <span className="subStoriesHeading">story 2</span>
-                            </div>
                         </div>
                         <div className="col-sm-2 contentDiv">
                             <h4 className="contentHeading">Completed</h4>
-                            <div className="subStories">
-                                <span className="subStoriesHeading">story 1</span>
-                            </div>
                         </div>
                         <div className="col-sm-2 contentDiv">
                             <h4 className="contentHeading">Bug List</h4>
@@ -113,9 +102,9 @@ export default class ProjectDetails extends Component {
 
                 <div className="navModal">
                     <Modal
-                    isOpen={this.state.isModalOpen}
-                    style={this.state.projectCreationCSS}
-                    ariaHideApp={false}>
+                        isOpen={this.state.isModalOpen}
+                        style={this.state.projectCreationCSS}
+                        ariaHideApp={false}>
                         <div className="app-modal-header">
                             <h3>story 1</h3>
                         </div>

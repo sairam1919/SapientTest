@@ -9,6 +9,8 @@
         "babel": "^5.8.23",
         "babel-loader": "^5.3.1",
         "bootstrap": "^4.0.0-beta.2",
+        "highcharts": "^8.0.0",
+        "highcharts-react-official": "^2.2.2",
         "moment": "^2.24.0",
         "mongodb": "^3.4.1",
         "mssql": "^6.0.1",

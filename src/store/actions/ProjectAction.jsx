@@ -11,3 +11,17 @@ export function fetchProjects(){
         type:HomeConstants.PROJECT_LIST,
     }
 }
+
+export function updateProject(project){
+    return{
+        type:HomeConstants.PROJECT_SUCCESS,
+        project
+    }
+}
+
+export function updateProjectDetails(projectDetails) {
+    return {
+        type: HomeConstants.PROJECT_DETAILS,
+        projectDetails
+    }
+}

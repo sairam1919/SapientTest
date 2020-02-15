@@ -48,3 +48,8 @@
     cursor: pointer;
     color: skyblue;
 }
+
+.key {
+  font-weight: 900;
+  color: rebeccapurple;
+}

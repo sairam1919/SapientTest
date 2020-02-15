@@ -6,7 +6,7 @@ export function signInReducer(state = { isLogin: false }, action={}){
         case HomeConstants.SIGNIN_SUCCESS:
             return {
                 ...state,
-                isLogin:action.data.isLogin,
+                isLogin:true,
                 userDetails: action.data,
             }
         case HomeConstants.SIGNIN_FAILED:

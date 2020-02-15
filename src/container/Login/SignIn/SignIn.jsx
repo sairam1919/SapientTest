@@ -9,7 +9,8 @@ export class SignIn extends Component{
         super(props);
         this.state={
             userName:'',
-            password:''
+            password:'',
+            userDetails: ''
         }
     }
     onChangeInputBox(e,id){
@@ -23,11 +24,9 @@ export class SignIn extends Component{
         this.props.goToSignUpPage();
     }
     signIn(){
-        console.log(this.state);
         if(this.props.goToDashBoard) {
             axios.get('http://localhost:8080/api/user')
                .then(res => {
-                console.log("Data", res);
                 res.data.recordset.forEach(element => {
                   if ( element.Email.trim() === this.state.userName && element.Password.trim() === this.state.password) {
                     this.props.goToDashBoard(element);

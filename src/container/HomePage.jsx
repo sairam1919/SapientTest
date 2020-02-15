@@ -13,7 +13,8 @@ import { JaraApp } from '../JaraApp';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { userLogOut } from '../store/actions/SignInActions';
 import Project from '../component/Project/Project';
-import { saveProject, fetchProjects } from '../store/actions/ProjectAction';
+import { saveProject, fetchProjects, updateProjectDetails } from '../store/actions/ProjectAction';
+import Release from '../component/Release';
 
 
 
@@ -33,28 +34,36 @@ class HomePage extends Component {
         this.logOut = this.logOut.bind(this);
         this.toggleProjectModel = this.toggleProjectModel.bind(this);
         this.saveProject = this.saveProject.bind(this);
+        this.updateProjectDetails = this.updateProjectDetails.bind(this);
     }
 
     toggleProjectModel(){
         this.setState({ showModal: !this.state.showModal })
     }
     setModule(val) {
-        console.log("currentPage", val);
         this.setState({ currentPage: val });
     }
     logOut(user) {
         this.props.userLogOut(user);
     }
+    updateProjectDetails(projectDetails) {
+        this.props.updateProjectDetails(projectDetails);
+    }
     gotoModule() {
         const module = this.state.currentPage;
         let renderComponent = null;
-        console.log("Module", module);
         switch (module) {
             case 'dashboard':
-                renderComponent = <DashBoard></DashBoard>;
+                renderComponent = <DashBoard
+                projectData={this.props.projectData}
+                setModule={this.setModule}
+                ></DashBoard>;
                 break;
-            case 'settings':
-                renderComponent = ""
+            case 'releases':
+                renderComponent = <Release 
+                projectData={this.props.projectData}
+                updateProjectDetails={this.updateProjectDetails}
+                />
                 break;
                 case 'projects':
                 renderComponent = <Project 
@@ -62,7 +71,10 @@ class HomePage extends Component {
                 saveProject={this.saveProject} />;
                 break;
             default:
-                renderComponent = <DashBoard></DashBoard>;
+                renderComponent = <DashBoard
+                projectData={this.props.projectData}
+                setModule={this.setModule}
+                ></DashBoard>;
                 break;
         }
         return renderComponent;
@@ -91,6 +103,7 @@ class HomePage extends Component {
                             toggleProjectModel={this.toggleProjectModel}
                             fetchProjects={this.fetchProjects}
                             projectData={projectData}
+                            userDetails = {this.props.userDetails}
                             />
                         <div style={{ marginLeft: 120 }}> {this.gotoModule()}</div> </div> :
                     <Redirect to='/' />
@@ -116,7 +129,8 @@ const mapDispatchToProps = dispatch => {
     return {
         userLogOut: (user) => dispatch(userLogOut(user)),
         saveProject:(project) => dispatch(saveProject(project)),
-        fetchProjects:()=> dispatch(fetchProjects())
+        fetchProjects:()=> dispatch(fetchProjects()),
+        updateProjectDetails:(projectDetails) => dispatch(updateProjectDetails(projectDetails))
     };
 };
 

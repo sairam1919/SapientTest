@@ -23,15 +23,10 @@ export class NavBar extends Component{
         this.projectToggle = this.projectToggle.bind(this);
     }
     gotoModule(e,module){
-        console.log("module:",module);
         if(this.props.setModule){
-            console.log("module.....", module);
             this.props.setModule(module);
         }
     }
-    // userOperations(){
-    //     onClick={()=>this.userOperations()}
-    // }fetchProjects
     toggle() {
     	this.setState({
     		dropdownOpen: !this.state.dropdownOpen
@@ -53,6 +48,7 @@ export class NavBar extends Component{
     }
     render(){
         const {signInData,projectData} = this.props;
+        console.log("signInData", signInData);
         let items = [];
         projectData.projectList && projectData.projectList.forEach( (item) => {
             items.push(<DropdownItem >{item.project_name}</DropdownItem>) 
@@ -83,19 +79,12 @@ export class NavBar extends Component{
     								<div className="menuarea">
                                     { this.state.projectDropdownOpen ? <div className="carddrop-withoutborder"></div> : ''}
     									<DropdownMenu className="topnavbar-project-dropdown-window">
-                                        {/* <DropdownItem onClick={()=>this.gotoComponent('orchestration')} >Orchestration</DropdownItem>
-                                        <DropdownItem >Device Management</DropdownItem>
-                                        <DropdownItem >Alarms Management</DropdownItem>
-                                        <DropdownItem >Backup Management</DropdownItem>
-                                        <DropdownItem >User Management</DropdownItem> */}
                                         {items}
     									</DropdownMenu>
     								</div>
     							</Dropdown>
                                     </a>
                                 </li>
-                                {/* <li><a>Teams</a></li> */}
-                                {/* <li onClick={()=>this.createProject()}><a>Create Project</a></li> */}
                             </ul>
                         </div>
                         <div className="navbar-right">
@@ -130,9 +119,9 @@ export class NavBar extends Component{
                                 
                                 </li>
                                     <ReactTooltip type='dark' place="bottom" effect="float"/>
-                                <li className="user-name-role" data-tip={"Logged in as "+ signInData.UserName + "("+signInData.Role +")"}>
-                                    <p className="user-profile-user-name">{signInData.UserName}</p>
-                                    <p>{signInData.Role}</p>
+                                <li className="user-name-role" data-tip={"Logged in as "+ signInData.userDetails.data.UserName + "("+signInData.userDetails.data.Role +")"}>
+                                    <p className="user-profile-user-name">{signInData.userDetails.data.UserName}</p>
+                                    <p>{signInData.userDetails.data.Role}</p>
                                 </li>
                             </ul>
 
@@ -147,9 +136,9 @@ export class NavBar extends Component{
                              <a className="projects-icon"></a>
                              <p>Project</p>
                         </div> 
-                         <div className="said-nav-list" onClick={(e)=>this.gotoModule(e,'settings')}>
+                         <div className="said-nav-list" onClick={(e)=>this.gotoModule(e,'releases')}>
                              <a className="settings-icon"></a>
-                             <p>Settings</p>
+                             <p>Releases</p>
                         </div> 
                     </div>
                 </div>
