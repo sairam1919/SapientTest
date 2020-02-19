@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 import './Project.css';
 import FeatureCreation from "../FeatureCreation/FeatureCreation";
 import { Navbar } from 'reactstrap';
+import Notificationbar from '../../container/NotificationBarContainer/NotificationBarContainer';
 
 export class Project extends Component {
     constructor(props) {
@@ -44,6 +45,8 @@ export class Project extends Component {
             release_sdate: '',
             release_name: '',
             Teams: ["Greedo", "Dhrona", "Falcon", "Skywalker"],
+            showNotification: false,
+            notificationContent: '',
         }
     }
     closeProjectModel() {
@@ -57,14 +60,18 @@ export class Project extends Component {
     }
 
     createEpic = (sampleObj) => {
+        let temp = '';
+        let name = '';
         switch (sampleObj.type) {
             case "epic":
-                this.props.projectData.projectList.forEach((elemnt, index) => {
+                this.props.projectData.projectList.forEach((elemnt) => {
                     if (elemnt.name === this.state.selectedProject) {
                         let temp = { "name": sampleObj.name, "description": sampleObj.description, capabilites: [] }
+                        name = sampleObj.name;
                         elemnt.epics.push(temp);
                     }
                 })
+                temp = "Epic";
                 break;
             case "capability":
                 this.props.projectData.projectList.forEach((elemnt) => {
@@ -72,11 +79,13 @@ export class Project extends Component {
                         elemnt.epics.forEach((epic) => {
                             if (epic.name === sampleObj.epicName) {
                                 let temp = { "name": sampleObj.name, "description": sampleObj.description, features: [] }
+                                name = sampleObj.name;
                                 epic.capabilites.push(temp);
                             }
                         })
                     }
                 })
+                temp = "Capability";
                 break;
             case "feature":
                 this.props.projectData.projectList.forEach((elemnt) => {
@@ -87,12 +96,14 @@ export class Project extends Component {
                                     if (capability.name === sampleObj.capabilityName) {
                                         let temp = { "name": sampleObj.name, "description": sampleObj.description, "team": sampleObj.team, userstories: [] }
                                         capability.features.push(temp);
+                                        name = sampleObj.name;
                                     }
                                 })
                             }
                         })
                     }
                 })
+                temp = "Feature";
                 break;
             case "userstory":
                 this.props.projectData.projectList.forEach((elemnt) => {
@@ -113,9 +124,12 @@ export class Project extends Component {
                         })
                     }
                 })
+                temp = "Userstory";
                 break;
         }
         this.setState({ projects: this.props.projectData.projectList });
+        let content = temp + " " + name + " " + "Has been created Successfuly";
+        this.showNotification(content);
     }
     onChangeInputBox(e, id) {
         if (id === 'project_name') {
@@ -135,9 +149,12 @@ export class Project extends Component {
             name: this.state.project_name,
             description: this.state.project_description,
             version: this.state.project_version,
-            releases: []
+            releases: [],
+            epics: []
         });
-        this.setState({ isModalOpen: false })
+        let content = "Project" + " " + this.state.project_name + " " + "Has been created Successfuly";
+        this.showNotification(content);
+        this.setState({ isModalOpen: false });
     }
 
     showProjectDetails = (e, item) => {
@@ -148,9 +165,19 @@ export class Project extends Component {
         this.setState({ showSelectedProjectDetils: false, isProjectSelected: false });
     }
 
+    showNotification = (content) => {
+        this.setState({showNotification: true, notificationContent: content});
+    }
+
+    hideNotification = () => {
+      this.setState({showNotification: false});
+    }
+
+
     render() {
         const { projectData } = this.props;
-        const { isProjectSelected, showSelectedProjectDetils, selectedProject } = this.state;
+        const { isProjectSelected, showSelectedProjectDetils, selectedProject, showNotification, notificationContent } = this.state;
+        console.log(showNotification, notificationContent);
         const renderProjects = [];
         const projectList = projectData && projectData.projectList;
 
@@ -197,6 +224,12 @@ export class Project extends Component {
                     </div> : ""
                     }
                 </div>
+                {showNotification ?
+                <Notificationbar 
+                notificationContent = {notificationContent}
+                hideNotification = {this.hideNotification}
+                />: null
+                }
                 <Modal
                     isOpen={this.state.isModalOpen}
                     style={this.state.projectCreationCSS}

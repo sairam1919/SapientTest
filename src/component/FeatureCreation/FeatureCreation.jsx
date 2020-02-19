@@ -60,7 +60,7 @@ export default class FeatureCreation extends Component {
             "featureName": this.state.selectedFeature
         };
         this.props.createEpic(sampleObj)
-        this.setState({ isModalOpen: false });
+        this.setState({ isModalOpen: false, name: '', description: '', team: '' });
     }
 
     onChangeInputBox(e, id) {
@@ -178,7 +178,7 @@ export default class FeatureCreation extends Component {
                 <span className="newRelease" onClick={(e) => this.handlecreation(e, 'userstory')}>Create UserStory</span>
             </div>
         )
-            console.log("Userstories Length", renderUserStories.length);
+
         Teams.forEach((elmnt) => {
             renderDropdownElements.push(
                 <option value={elmnt} >{elmnt}</option>

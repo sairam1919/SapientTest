@@ -46,15 +46,15 @@ export class SingUp extends Component{
 
     signUp(){
         const { userName, email, password, mobileNum, userRole} = this.state;
-        let body = { "UserName": userName, "Email": email, "Password": password, "MobileNumber": mobileNum, "Role": userRole};
-        console.log("Body" + body);
+        let body = { "UserName": userName, "Email": email, "Password": password, "MobileNumber": mobileNum, "Role": userRole}
         axios.post('http://localhost:8080/api/user',body)
         .then(res => {
             if(res.data) {
             let body = {
                 username:userName,
                 password:password,
-                email:email
+                email:email,
+                userRole:userRole
               }
               this.sendEmail(body) 
               this.setState({ response: "Registerd Successfully. Go and Try Logging in"});
@@ -92,8 +92,8 @@ export class SingUp extends Component{
                     </div>
                 </div> 
                 <div className="signup-form-container">
-                        {this.state.showError ? this.state.response: "" }
-                        {this.state.showSuccess ? this.state.response: "" }
+                        {this.state.showError ? <span className = "responseMessage">{this.state.response}</span>: "" }
+                        {this.state.showSuccess ? <span className = "responseMessage">{this.state.response}</span>: ""}
                         <h1>Create Account</h1>
                         <input type="email" className="input-box" placeholder="Email" value={this.state.email} onChange={(e)=>this.onChangeInputBox(e,'email')} />
                         {this.state.emailValidationError ? "Please enter valied email": "" }
@@ -101,7 +101,7 @@ export class SingUp extends Component{
                         <input type="password" className="input-box" placeholder="Password" value={this.state.password} onChange={(e)=>this.onChangeInputBox(e,'password')}/>
                         <input type="password" className="input-box" placeholder="Re Enter Password" value={this.state.confirmPassword} onChange={(e)=>this.onChangeInputBox(e,'confirmPassword')} />
                         <input type="text" className="input-box" placeholder="Mobile Number" value={this.state.mobileNum} onChange={(e)=>this.onChangeInputBox(e,'mobileNum')} />
-                        <select className="drop-dow">
+                        <select className="drop-dow" onChange={(e)=>this.onChangeInputBox(e,'userRole')}>
                             <option value="">Select User Role</option>
                             {
                                 roles.map(function(val,i){

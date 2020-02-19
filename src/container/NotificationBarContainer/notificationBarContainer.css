@@ -1,14 +1,16 @@
-    .warning-bar {
-        background-color: darkorange;
-        color: #ffffff;
-    }
-
-    .information-bar {
-        background-color: #2DBECD;
-        color: #ffffff;
-    }
-
-    .error-bar {
-        background-color: E61E50;
-        color: #ffffff;
-    }
+#notification-main {
+    position: absolute;
+    right: 50px;
+    bottom: 800px;
+    top: 75px;
+    left: auto;
+    transform: translate(-50%, -50%);
+    height: fit-content;
+    width: fit-content;
+    border-radius: 6px;
+    background-color: #FFFFFF;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.05), 0 30px 40px 0 rgba(0,0,0,0.2);
+}
+.create-project-header h6 {
+    margin: 5px;
+}

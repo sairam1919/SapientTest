@@ -44,7 +44,35 @@ export default class ProjectDetails extends Component {
         console.log('Data: ', data);
     };
 
+    onDragStart = (ev, id) => {
+        ev.dataTransfer.setData("id", id);
+    }
+
+    onDragOver = (ev) => {
+        ev.preventDefault();
+    }
+
+    onDrop = (ev, cat) => {
+       let id = ev.dataTransfer.getData("id");
+       
+       let tasks = this.state.tasks.filter((task) => {
+           if (task.name == id) {
+               task.category = cat;
+           }
+           return task;
+       });
+
+       this.setState({
+           ...this.state,
+           tasks
+       });
+    }
+
     render() {
+        var tasks = {
+            wip: [],
+            complete: []
+        }
         const { projectData, selectedProject } = this.props;
         let renderUserstories = [];
         if (projectData && projectData.projectList && projectData.projectList.length) {
@@ -54,7 +82,6 @@ export default class ProjectDetails extends Component {
                         epic.capabilites.forEach((capability) => {
                             capability.features.forEach((feature) => {
                                 feature.userstories.forEach((userstory) => {
-                                    console.log("UserStories Length", userstory);
                                     renderUserstories.push(
                                         <div className="subStories">
                                             <div><span className="subStoriesHeading" onClick={this.show} >{userstory.name}</span></div>

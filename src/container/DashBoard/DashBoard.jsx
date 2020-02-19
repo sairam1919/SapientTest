@@ -65,7 +65,7 @@ export class DashBoard extends Component {
                         }
                     })
                 }
-                capabilitesList.push(capabilitesList);
+                capabilitesList.push(capabilityTemp);
                 featuresList.push(featureTemp);
                 userstoryList.push(userStroyTemp);
             })

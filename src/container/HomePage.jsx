@@ -15,6 +15,7 @@ import { userLogOut } from '../store/actions/SignInActions';
 import Project from '../component/Project/Project';
 import { saveProject, fetchProjects, updateProjectDetails } from '../store/actions/ProjectAction';
 import Release from '../component/Release';
+import Notificationbar from './NotificationBarContainer/NotificationBarContainer';
 
 
 
@@ -57,42 +58,40 @@ class HomePage extends Component {
                 renderComponent = <DashBoard
                 projectData={this.props.projectData}
                 setModule={this.setModule}
+                showNotification = {this.showNotification}
                 ></DashBoard>;
                 break;
             case 'releases':
                 renderComponent = <Release 
                 projectData={this.props.projectData}
                 updateProjectDetails={this.updateProjectDetails}
+                showNotification = {this.showNotification}
                 />
                 break;
                 case 'projects':
                 renderComponent = <Project 
                 projectData={this.props.projectData}
-                saveProject={this.saveProject} />;
+                saveProject={this.saveProject}
+                showNotification = {this.showNotification}
+                />;
                 break;
             default:
                 renderComponent = <DashBoard
                 projectData={this.props.projectData}
                 setModule={this.setModule}
+                showNotification = {this.showNotification}
                 ></DashBoard>;
-                break;
         }
         return renderComponent;
     }
     saveProject(project){
         this.props.saveProject(project);
     }
+
     render() {
         const { signInData,projectData } = this.props;
         return (
             <div>
-                {this.state.showModal ? 
-                <Project 
-                toggleProjectModel={this.toggleProjectModel}
-                saveProject = {this.saveProject}
-                showModal = {this.state.showModal}
-                /> 
-                : null }
                 {signInData.isLogin
                     ?
                     <div>
@@ -108,7 +107,6 @@ class HomePage extends Component {
                         <div style={{ marginLeft: 120 }}> {this.gotoModule()}</div> </div> :
                     <Redirect to='/' />
                 }
-
             </div>
 
         )

@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 import ProjectDetails from './ProjectDetails/projectDetails';
 import { Navbar } from 'reactstrap';
 import "./Release.css";
+import Notificationbar from '../container/NotificationBarContainer/NotificationBarContainer'
 
 export default class Release extends React.Component {
 
@@ -40,6 +41,8 @@ export default class Release extends React.Component {
             showSelectedProjectDetils: false,
             selectedProject: '',
             isProjectSelected: false,
+            showNotification: false,
+            notificationContent: '',
         }
     }
 
@@ -68,11 +71,11 @@ export default class Release extends React.Component {
     }
 
     handleBackButtonClick = () => {
-        this.setState({ showSelectedProjectDetils: false, isProjectSelected: true,  });
+        this.setState({ showSelectedProjectDetils: false, isProjectSelected: true, });
     }
 
     onChangeSelectBox = (e) => {
-        this.setState({selectedProject: e.target.value, isProjectSelected: true});
+        this.setState({ selectedProject: e.target.value, isProjectSelected: true });
     }
 
     releaseForm = () => {
@@ -81,24 +84,34 @@ export default class Release extends React.Component {
             "release_name": release_name, "release_description": release_description,
             "release_startDate": release_sdate, "release_endDate": release_edate
         }
-      let projectList =  this.props.projectData.projectList ;
-      
+        let projectList = this.props.projectData.projectList;
+
         projectList.forEach(element => {
-            if(element.name === this.state.selectedProject) {
-                 element.releases.push(obj);
+            if (element.name === this.state.selectedProject) {
+                element.releases.push(obj);
             }
         })
         this.props.updateProjectDetails(projectList);
         this.setState({ isRelaseModalOpen: false });
+        let content =  release_name+ " " + "Has been created Successfuly";
+        this.showNotification(content);
     }
 
     showSelectedProjectDetils = (e, item) => {
         this.setState({ showSelectedProjectDetils: true, isProjectSelected: false });
     }
 
+    showNotification = (content) => {
+        this.setState({ showNotification: true, notificationContent: content });
+    }
+
+    hideNotification = () => {
+        this.setState({ showNotification: false });
+    }
+
     render() {
         const { projectData } = this.props;
-        const { showSelectedProjectDetils, isProjectSelected } = this.state;
+        const { showSelectedProjectDetils, isProjectSelected, showNotification, notificationContent } = this.state;
         const renderRelease = [];
         const renderOptions = [];
         renderOptions.push(
@@ -109,7 +122,7 @@ export default class Release extends React.Component {
                 renderOptions.push(
                     <option value={item.name}> {item.name}</option>
                 )
-                if(item.name === this.state.selectedProject) {
+                if (item.name === this.state.selectedProject) {
                     if (item.releases && item.releases.length) {
                         item.releases.forEach((release) => {
                             renderRelease.push(
@@ -124,7 +137,7 @@ export default class Release extends React.Component {
                         })
                     }
                 }
-                
+
             });
         }
         renderRelease.push(
@@ -145,15 +158,15 @@ export default class Release extends React.Component {
                         </Navbar>
                         <div className="dashboard-divider" />
                     </div>
-                 { !showSelectedProjectDetils ? <div className="SelectProject">
+                    {!showSelectedProjectDetils ? <div className="SelectProject">
                         <div> <h6>{"Select Project: "}</h6></div>
-                        <div className ="selectOptions">
-                            <select onChange = {(e) => this.onChangeSelectBox(e)}>
+                        <div className="selectOptions">
+                            <select onChange={(e) => this.onChangeSelectBox(e)}>
                                 {renderOptions}
                             </select>
                         </div>
 
-                    </div>: "" }
+                    </div> : ""}
                     {isProjectSelected ? <div className="container">
                         <div className="row">
                             {renderRelease}
@@ -164,10 +177,17 @@ export default class Release extends React.Component {
                 {
                     showSelectedProjectDetils ?
                         <ProjectDetails
-                            projectData ={ this.props.projectData}
+                            projectData={this.props.projectData}
                             handleBackButtonClick={this.handleBackButtonClick}
                             selectedProject={this.state.selectedProject}
                         /> : ""
+                }
+
+                {showNotification ?
+                    <Notificationbar
+                        notificationContent={notificationContent}
+                        hideNotification={this.hideNotification}
+                    /> : null
                 }
                 <Modal
                     isOpen={this.state.isRelaseModalOpen}

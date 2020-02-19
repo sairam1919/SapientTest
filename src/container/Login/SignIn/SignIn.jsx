@@ -10,7 +10,9 @@ export class SignIn extends Component{
         this.state={
             userName:'',
             password:'',
-            userDetails: ''
+            userDetails: '',
+            response: '',
+            showError: ''
         }
     }
     onChangeInputBox(e,id){
@@ -28,11 +30,10 @@ export class SignIn extends Component{
             axios.get('http://localhost:8080/api/user')
                .then(res => {
                 res.data.recordset.forEach(element => {
-                  if ( element.Email.trim() === this.state.userName && element.Password.trim() === this.state.password) {
+                  if ( element.UserName.trim() === this.state.userName && element.Password.trim() === this.state.password) {
                     this.props.goToDashBoard(element);
                   } else {
-                    this.response = "Invalid UserName (or) Password"
-                    this.showError = true;
+                    this.setState ({response: "Invalid UserName (or) Password", showError: true });
                   }
                 });
             })
@@ -47,6 +48,7 @@ export class SignIn extends Component{
                     <input type="password" className="input-box" placeholder="Password" value={this.state.password} onChange={(e)=>this.onChangeInputBox(e,'password')}/>
                     <a className="signin-a-tag" href="#">Forgot your password?</a>
                     <button className="signin-btn form-btn" onClick={()=>this.signIn()}>Sign In</button>
+                    {this.state.showError ? <span className ="ErrorMessage">{this.state.response}</span> : ""}
                 </div>
                 <div className="overlay-form-container">
                     <div className="overlay-form">

@@ -99,3 +99,10 @@
          border-color: #FFFFFF;
          margin-top: 20px;
      }
+
+     .ErrorMessage {
+        color: #FF4B2B;
+        margin-top: 5px;
+        font-size: 14px;
+        font-family: sans-serif;
+    }
