@@ -3,14 +3,14 @@ const projectList = [{
     name: "Portal Current",
     description: "Portal",
     version: "1.00.00",
-    releases: [{ "release_name": "Release1" , "release_description": "release1" , "release_startDate": null, "release_endDate": null}],
+    releases: [{ "release_name": "Release1" , "release_description": "Test Release" , "release_startDate": null, "release_endDate": null}],
     epics: [{
-        name: "Test", description: "Test", capabilites: [
+        name: "Dashboard", description: "Dahsboard module", capabilites: [
             {
-                name: "Test", description: "Test", features: [
+                name: "Side Menu", description: "Menu bar", features: [
                     {
-                        name: "Test", description: "Test", team: "Greedo", userstories: [
-                            { name: "Test", description: "Test", team: "Greedo" }
+                        name: "Icons", description: "Side Menu ICons", team: "Greedo", userstories: [
+                            { name: "Icon", description: "Each Icon Functionality", team: "Greedo", type:"backlog" }
                         ]
                     }
                 ]
@@ -24,12 +24,12 @@ const projectList = [{
     version: "3.00.00",
     releases: [],
     epics: [{
-        name: "Test1", description: "Test1", capabilites: [
+        name: "Module Platform", description: "Module Export Epic", capabilites: [
             {
-                name: "Test1", description: "Test1", features: [
+                name: "Module Export", description: "Export Capability", features: [
                     {
-                        name: "Test1", description: "Test1", team: "Greedo", userstories: [
-                            { name: "Test1", description: "Test1", team: "Skywalker" }
+                        name: "Module Feature", description: "Feature", team: "Greedo", userstories: [
+                            { name: "Module User Story", description: "Userstory", team: "Skywalker", type:"backlog" }
                         ]
                     }
                 ]

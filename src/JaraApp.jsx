@@ -30,7 +30,6 @@ export class JaraApp extends Component {
         this.setState({ isSignIn: true, isSignUp: false });
     }
     goToDashBoard(data) {
-        console.log("Data: ", data);
         this.setState({userDetails: data});
         this.props.signInUser(data);
     }

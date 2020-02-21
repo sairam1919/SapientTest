@@ -17,7 +17,7 @@ export default class Release extends React.Component {
                     left: 0,
                     right: 0,
                     bottom: 315,
-                    backgroundColor: '#dfdfec'
+                    backgroundColor: 'none'
                 },
                 content: {
                     top: '50%',
@@ -126,7 +126,7 @@ export default class Release extends React.Component {
                     if (item.releases && item.releases.length) {
                         item.releases.forEach((release) => {
                             renderRelease.push(
-                                <div className="col-sm-6 releaseDiv">
+                                <div className="col-sm-4 releaseDiv">
                                     <span className="releaseHeading" onClick={(e) => this.showSelectedProjectDetils(e, item)}>{"Name: "}{release.release_name}</span>
                                     <br></br>
                                     <span className="releaseHeading" onClick={(e) => this.showSelectedProjectDetils(e, item)}>{"StartDate: "}{release.release_startDate}</span>
@@ -141,7 +141,7 @@ export default class Release extends React.Component {
             });
         }
         renderRelease.push(
-            <div className="col-sm-6 releaseDiv newDiv">
+            <div className="col-sm-4 releaseDiv newDiv">
                 <span className="newRelease" onClick={this.showRelease}>Create New Release ...</span>
             </div>
         );

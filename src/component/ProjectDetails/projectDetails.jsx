@@ -6,7 +6,9 @@ export default class ProjectDetails extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            projectData: this.props.projectData,
             isModalOpen: false,
+            selectedStory: '',
             projectCreationCSS: {
                 overlay: {
                     position: 'fixed',
@@ -14,7 +16,7 @@ export default class ProjectDetails extends Component {
                     left: 0,
                     right: 0,
                     bottom: 315,
-                    backgroundColor: '#dfdfec'
+                    backgroundColor: 'none'
                 },
                 content: {
                     top: '50%',
@@ -33,48 +35,26 @@ export default class ProjectDetails extends Component {
         }
     }
 
-    show = () => {
-        this.setState({ isModalOpen: true });
+    show = (e, name) => {
+        this.setState({ isModalOpen: true, selectedStory: name });
     }
     hide = () => {
         this.setState({ isModalOpen: false });
     }
     eventLogger = (e, data) => {
-        console.log('Event: ', e);
-        console.log('Data: ', data);
     };
 
-    onDragStart = (ev, id) => {
-        ev.dataTransfer.setData("id", id);
+    onDragStart = (event, name) => {
+        event.dataTransfer.setData("name", name);
+    }
+    onDragOver = (event) => {
+        event.preventDefault();
     }
 
-    onDragOver = (ev) => {
-        ev.preventDefault();
-    }
-
-    onDrop = (ev, cat) => {
-       let id = ev.dataTransfer.getData("id");
-       
-       let tasks = this.state.tasks.filter((task) => {
-           if (task.name == id) {
-               task.category = cat;
-           }
-           return task;
-       });
-
-       this.setState({
-           ...this.state,
-           tasks
-       });
-    }
-
-    render() {
-        var tasks = {
-            wip: [],
-            complete: []
-        }
-        const { projectData, selectedProject } = this.props;
-        let renderUserstories = [];
+    onDrop = (event, cat) => {
+        let taskName = event.dataTransfer.getData("name");
+        const { selectedProject } = this.props;
+        let { projectData } = this.state;
         if (projectData && projectData.projectList && projectData.projectList.length) {
             projectData.projectList.forEach((elemnt) => {
                 if (elemnt.name === selectedProject) {
@@ -82,13 +62,54 @@ export default class ProjectDetails extends Component {
                         epic.capabilites.forEach((capability) => {
                             capability.features.forEach((feature) => {
                                 feature.userstories.forEach((userstory) => {
-                                    renderUserstories.push(
-                                        <div className="subStories">
-                                            <div><span className="subStoriesHeading" onClick={this.show} >{userstory.name}</span></div>
+                                    if (userstory.name == taskName) {
+                                        userstory.type = cat;
+                                    }
+                                })
+                            })
+                        })
+                    })
+                }
+            })
+        }
+
+        this.setState({
+            ...this.state,
+            projectData
+        });
+
+    }
+
+    render() {
+        var tasks = {
+            backlog: [],
+            inprogress: [],
+            testing: [],
+            completed: [],
+            buglist: []
+        }
+        const { selectedProject } = this.props;
+        const { projectData } = this.state;
+
+        if (projectData && projectData.projectList && projectData.projectList.length) {
+            projectData.projectList.forEach((elemnt) => {
+                if (elemnt.name === selectedProject) {
+                    elemnt.epics.forEach((epic) => {
+                        epic.capabilites.forEach((capability) => {
+                            capability.features.forEach((feature) => {
+                                feature.userstories.forEach((userstory) => {
+                                    tasks[userstory.type].push(
+                                        <div
+                                            key={userstory.name}
+                                            onDragStart={(event) => this.onDragStart(event, userstory.name)}
+                                            draggable
+                                            className="draggable subStories"
+                                            onClick= {(e) => this.show(e, userstory.name)}
+                                            >
+                                            <div><span className="subStoriesHeading">{userstory.name}</span></div>
                                             <div>
-                                                <span title="Edit" className="glyphicon glyphicon-edit contentIcons"></span>
-                                                <span title="Checklist" className="glyphicon glyphicon-check contentIcons"> <b>2/3</b></span>
-                                                <span title="Comments" className="glyphicon glyphicon-comment contentIcons"></span>
+                                                <span title="Edit" className="contentIcons"><i class="fa fa-edit"></i></span>
+                                                <span title="Comments" className="contentIcons"><i class="fa fa-comment"></i></span>
                                             </div>
                                         </div>
                                     )
@@ -104,25 +125,33 @@ export default class ProjectDetails extends Component {
                 <div className="container-fluid">
                     <div className="row mainDiv">
                         <span className="Projectname" onClick={this.props.handleBackButtonClick}>{selectedProject}</span>
-                        <span className="glyphicon glyphicon-star-empty starIcon"></span>
                         <span className="teamSize"> 8 Members</span>
                     </div>
                     <div className="row">
-                        <div className="col-sm-2 contentDiv">
-                            <h4 className="contentHeading">Backlogs</h4>
-                            {renderUserstories}
+                        <div className="col-sm-2 contentDiv" onDragOver={(event) => this.onDragOver(event)}
+                            onDrop={(event) => { this.onDrop(event, "backlog") }}>
+                            <h4 className="contentHeading" >Backlogs</h4>
+                            {tasks.backlog}
                         </div>
-                        <div className="col-sm-2 contentDiv">
-                            <h4 className="contentHeading">InProgress</h4>
+                        <div className="col-sm-2 contentDiv" onDragOver={(event) => this.onDragOver(event)}
+                            onDrop={(event) => { this.onDrop(event, "inprogress") }}>
+                            <h4 className="contentHeading" >InProgress</h4>
+                            {tasks.inprogress}
                         </div>
-                        <div className="col-sm-2 contentDiv">
+                        <div className="col-sm-2 contentDiv" onDragOver={(event) => this.onDragOver(event)}
+                            onDrop={(event) => { this.onDrop(event, "testing") }}>
                             <h4 className="contentHeading">Testing</h4>
+                            {tasks.testing}
                         </div>
-                        <div className="col-sm-2 contentDiv">
+                        <div className="col-sm-2 contentDiv" onDragOver={(event) => this.onDragOver(event)}
+                            onDrop={(event) => { this.onDrop(event, "completed") }}>
                             <h4 className="contentHeading">Completed</h4>
+                            {tasks.completed}
                         </div>
-                        <div className="col-sm-2 contentDiv">
-                            <h4 className="contentHeading">Bug List</h4>
+                        <div className="col-sm-2 contentDiv" onDragOver={(event) => this.onDragOver(event)}
+                            onDrop={(event) => { this.onDrop(event, "buglist") }}>
+                            <h4 className="contentHeading">BugList</h4>
+                            {tasks.buglist}
                         </div>
                     </div>
                 </div>
@@ -133,7 +162,7 @@ export default class ProjectDetails extends Component {
                         style={this.state.projectCreationCSS}
                         ariaHideApp={false}>
                         <div className="app-modal-header">
-                            <h3>story 1</h3>
+                            <h3>{this.state.selectedStory}</h3>
                         </div>
                         <div className="app-modal-body">
                             <div className="row">
@@ -146,23 +175,20 @@ export default class ProjectDetails extends Component {
                                         <button type="button" className="btn btn-default" name="button">Save</button>
                                     </div>
                                 </div>
-                                <div className="col-sm-2">
+                                <div className="col-sm-4">
                                     <h3>Add</h3>
                                     <ul>
-                                        <li><span className="glyphicon glyphicon-user"></span>Members</li>
-                                        <li><span className="glyphicon glyphicon-copy"></span>Labels</li>
-                                        <li><span className="glyphicon glyphicon-check"></span>Checklist</li>
-                                        <li><span className="glyphicon glyphicon-eye-open"></span>Due Date</li>
-                                        <li><span className="glyphicon glyphicon-paperclip"></span>Attachment</li>
+                                        <li><span><i class="fa fa-user"></i></span>Members</li>
+                                        <li><span><i class="fa fa-copy"></i></span>Labels</li>
+                                        <li><span><i class="fa fa-check"></i></span>Checklist</li>
+                                        <li><span><i class="fa fa-calendar"></i></span>Due Date</li>
+                                        <li><span><i class="fa fa-paperclip"></i></span>Attachment</li>
                                     </ul>
                                     <h3>Actions</h3>
                                     <ul>
-                                        <li><span className="glyphicon glyphicon-arrow-right"></span>Move</li>
-                                        <li><span className="glyphicon glyphicon-copy"></span>Copy</li>
-                                        <li><span className="glyphicon glyphicon-eye-open"></span>Follow</li>
-                                        <li><span className="glyphicon glyphicon-floppy-disk"></span>Archive</li>
+                                        <li><span><i class="fa fa-copy"></i></span>Copy</li>
+                                        <li><span><i class="fa fa-archive"></i></span>Archive</li>
                                     </ul>
-                                    <a href="">share and more...</a>
                                 </div>
 
                             </div>

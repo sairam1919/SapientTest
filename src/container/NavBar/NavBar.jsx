@@ -41,14 +41,12 @@ export class NavBar extends Component{
         this.props.logOut(this.state);
     }
     gotoComponent(projectName){
-        console.log(projectName);
     }
     createProject(){
         this.props.toggleProjectModel();
     }
     render(){
         const {signInData,projectData} = this.props;
-        console.log("signInData", signInData);
         let items = [];
         projectData.projectList && projectData.projectList.forEach( (item) => {
             items.push(<DropdownItem >{item.project_name}</DropdownItem>) 

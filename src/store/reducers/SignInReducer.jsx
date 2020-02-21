@@ -1,7 +1,6 @@
 import { HomeConstants } from "../../utils/Constants";
 
 export function signInReducer(state = { isLogin: false }, action={}){
-    console.log('state', state);
     switch(action.type){
         case HomeConstants.SIGNIN_SUCCESS:
             return {

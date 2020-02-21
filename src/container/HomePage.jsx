@@ -16,8 +16,7 @@ import Project from '../component/Project/Project';
 import { saveProject, fetchProjects, updateProjectDetails } from '../store/actions/ProjectAction';
 import Release from '../component/Release';
 import Notificationbar from './NotificationBarContainer/NotificationBarContainer';
-
-
+import DragDrop from '../component/DragDrop';
 
 class HomePage extends Component {
 

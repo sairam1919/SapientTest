@@ -19,7 +19,7 @@ export class Project extends Component {
                     left: 0,
                     right: 0,
                     bottom: 315,
-                    backgroundColor: '#dfdfec'
+                    backgroundColor: 'none'
                 },
                 content: {
                     top: '50%',
@@ -114,7 +114,7 @@ export class Project extends Component {
                                     if (capability.name === sampleObj.capabilityName) {
                                         capability.features.forEach((feature) => {
                                             if (feature.name === sampleObj.featureName) {
-                                                let temp = { "name": sampleObj.name, "description": sampleObj.description, "team": sampleObj.team }
+                                                let temp = { "name": sampleObj.name, "description": sampleObj.description, "team": sampleObj.team, "type": "backlog" }
                                                 feature.userstories.push(temp);
                                             }
                                         })
@@ -177,14 +177,13 @@ export class Project extends Component {
     render() {
         const { projectData } = this.props;
         const { isProjectSelected, showSelectedProjectDetils, selectedProject, showNotification, notificationContent } = this.state;
-        console.log(showNotification, notificationContent);
         const renderProjects = [];
         const projectList = projectData && projectData.projectList;
 
         if (projectList && projectList.length) {
             projectList.forEach((item) => {
                 renderProjects.push(
-                    <div className="col-sm-6 releaseDiv">
+                    <div className="col-sm-4 releaseDiv">
                         <div>
                             <span className="releaseHeading" onClick={(e) => this.showProjectDetails(e, item)}>{"Name: "}{item.name}</span>
                             <br></br>
@@ -198,7 +197,7 @@ export class Project extends Component {
         }
 
         renderProjects.push(
-            <div className="col-sm-6 releaseDiv newDiv">
+            <div className="col-sm-4 releaseDiv newDiv">
                 <span className="newRelease" onClick={this.show}>Create New Project ...</span>
             </div>
         );

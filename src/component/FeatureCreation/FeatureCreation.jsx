@@ -13,7 +13,7 @@ export default class FeatureCreation extends Component {
                     left: 0,
                     right: 0,
                     bottom: 315,
-                    backgroundColor: '#dfdfec'
+                    backgroundColor: 'none'
                 },
                 content: {
                     top: '50%',
@@ -77,7 +77,6 @@ export default class FeatureCreation extends Component {
         this.setState({ showDropDown: true });
     }
     handleShow = (e, name, data) => {
-        console.log(name, data);
         switch (name) {
             case "epic":
                 this.setState({ type: "capabilities", showEpics: false, showCapabilites: true, showFeatures: false, showUserStories: false, selectedEpic: data.name })
